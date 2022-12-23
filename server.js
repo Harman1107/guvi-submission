@@ -12,7 +12,11 @@ const User = require("./models/User");
 
 const authAPI = require("./apis/authAPI");
 
-dbConnect();
+dbConnect().then(() => {
+    app.listen(process.env.PORT, () => {
+        console.log("listening for requests");
+    })
+});
 
 //body parser
 app.use(bodyParser.json());
